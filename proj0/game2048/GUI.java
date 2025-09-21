@@ -79,7 +79,7 @@ class GUI extends TopLevel implements Observer {
                                         score, maxScore));
     }
 
-    /** The model notifies me that is has changed when its notifyObservers
+    /** The model notifies me that  has changed when its notifyObservers
      *  method is called, because my constructor registered me as an
      *  Observer of the model. */
     @Override

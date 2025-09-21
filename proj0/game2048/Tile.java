@@ -69,7 +69,7 @@ public class Tile {
 
     @Override
     public String toString() {
-        return String.format("%d@(%d, %d)", value(), col(), row());
+        return String.format("值%d坐标(%d, %d)", value(), col(), row());
     }
 
     /** My value. */

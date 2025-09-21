@@ -30,7 +30,7 @@ public class Board implements Iterable<Tile> {
      * (0 is null) with a current score of SCORE and the viewing perspective set to north. */
     public Board(int[][] rawValues, int score) {
         int size = rawValues.length;
-        values = new Tile[size][size];
+        values = new Tile[size][size];//4x4的棋局那就是4x4的棋盘board
         viewPerspective = Side.NORTH;
         for (int col = 0; col < size; col += 1) {
             for (int row = 0; row < size; row += 1) {

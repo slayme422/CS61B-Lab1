@@ -9,7 +9,10 @@ public class WodeTest01 {
         nums[0][1]=1;
         nums[1][0]=2;
         nums[1][1]=2;
-
-
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0;  j< nums[i].length; j++) {
+                System.out.println(nums[i][j]);
+            }
+        }
     }
 }

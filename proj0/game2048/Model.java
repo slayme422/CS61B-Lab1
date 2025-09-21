@@ -138,6 +138,17 @@ public class Model extends Observable {
      * */
     public static boolean emptySpaceExists(Board b) {
         // TODO: Fill in this function.
+        for (int row=0; row<b.size(); row++){
+            for(int col=0; col<b.size(); col++){
+
+                Tile value = b.tile(row, col);
+                System.out.println("我写的"+value);
+                //只要其中有一个value是0，那么就是null
+                if(value == null) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -147,7 +158,16 @@ public class Model extends Observable {
      * given a Tile object t, we get its value with t.value().
      */
     public static boolean maxTileExists(Board b) {
-        // TODO: Fill in this function.
+        for (int row=0;row<b.size();row++){
+            for(int col=0; col<b.size();col++) {
+                Tile tile = b.tile(row, col);
+                if (tile != null) {
+                    if (tile.value() == MAX_PIECE) {
+                        return true;
+                    }
+                }
+            }
+        }
         return false;
     }
 

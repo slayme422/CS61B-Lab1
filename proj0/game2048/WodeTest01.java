@@ -1,18 +1,16 @@
 package game2048;
+import org.junit.Test;
 
+import static org.junit.Assert.*;
 import java.util.Arrays;
 
 public class WodeTest01 {
     public static void main(String[] args) {
-        int [][] nums = new int[2][2];
-        nums[0][0]=1;
-        nums[0][1]=1;
-        nums[1][0]=2;
-        nums[1][1]=2;
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = 0;  j< nums[i].length; j++) {
-                System.out.println(nums[i][j]);
-            }
+        boolean[] merged = new boolean[4];
+        merged[0]=true;
+        merged[1]=true;
+        for (boolean b : merged) {
+            System.out.println(b);
         }
     }
 }

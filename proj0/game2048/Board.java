@@ -16,6 +16,7 @@ public class Board implements Iterable<Tile> {
     /** Side that the board currently views as north. */
     private Side viewPerspective;
 
+    // 构造器:定义一个Board的大小
     public Board(int size) {
         values = new Tile[size][size];
         viewPerspective = Side.NORTH;
@@ -34,8 +35,8 @@ public class Board implements Iterable<Tile> {
         viewPerspective = Side.NORTH;
         for (int col = 0; col < size; col += 1) {
             for (int row = 0; row < size; row += 1) {
-                int value = rawValues[size - 1 - row][col];
-                Tile tile;
+                int value = rawValues[size - 1 - row][col];//这是为了让棋局从左下角开始为起点
+                Tile tile;//创造了一个Tile对象在每一次遍历的时候，具体tile的值为0的时候就是null
                 if (value == 0) {
                     tile = null;
                 } else {

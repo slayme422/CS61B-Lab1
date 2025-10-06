@@ -1,10 +1,8 @@
 package deque;
 
-import org.checkerframework.checker.units.qual.Length;
-
 import java.util.Random;
 
-public class ArrayDeque {
+public class ArrayDeque<T>{
 
     /* Invariants
     1:addLast添加的位置永远在position: size
@@ -15,18 +13,18 @@ public class ArrayDeque {
     6.getFirst的位置永远都在(nextFirst+1)%array.length
     7.nextLast的初始位置永远都在nextLast上
     */
-    public int[]array;
+    public T[] array;
     public int size;
     public int nextFirst;
     public int nextLast;
     public ArrayDeque(){
-        array=new int[8];
+        array = (T []) new Object[8];
         nextFirst=array.length/2;
         nextLast=(nextFirst+1) % array.length;
     }
 
     public void resize(int capacity) {
-        int[] newArray = new int[capacity];
+        T [] newArray = (T[]) new Object[capacity];
 
         for (int i = 0; i < size; i++) {
             int index=(nextFirst+i+1)%array.length;
@@ -37,31 +35,32 @@ public class ArrayDeque {
         array=newArray;
     }
     /** Returns the item from the back of the list. */
-    public int getLast() {
+    public T getLast() {
         if(size==0){
-            return -1;
+            return null;
         }
         int index=(nextLast-1+array.length)%array.length;
 
         return array[index];
     }
-    public void addFirst(int x) {
-        if(size== array.length){
+    public void addFirst(T x) {
+
+        if( size== array.length){
             resize(size*2);
         }
         array[nextFirst]=x;
         nextFirst=(nextFirst-1+array.length)% array.length;
         size++;
     }
-    public int getFirst(){
+    public T getFirst(){
         if(size==0){
-            return -1;
+            return null;
         }
         int index=(nextFirst+1)%array.length;
         return array[index];
     }
 
-    public void addLast(int x){
+    public void addLast(T x){
         if(size==array.length){
             resize(size*2);
         }
@@ -70,9 +69,9 @@ public class ArrayDeque {
         size++;
     }
     /** Gets the ith item in the list (0 is the front). */
-    public int get(int i) {
+    public T get(int i) {
         if (i < 0 || i >= size) {
-            return -1; // 索引越界
+            return null; // 索引越界
         }
         // 修正：考虑循环数组的索引计算
         int index = (nextFirst + 1 + i) % array.length;
@@ -87,17 +86,17 @@ public class ArrayDeque {
 
     /** Deletes item from back of the list and
      * returns deleted item. */
-    public int removeLast() {
+    public T removeLast() {
         if (size == 0) {
-            return -1;
+            return null;
         }
 
         // 先获取要删除的元素
         int currentLast = (nextLast - 1 + array.length) % array.length;
-        int rmNum = array[currentLast];
+        T rmStuff = array[currentLast];
 
         // 删除元素
-        array[currentLast] = 0;
+        array[currentLast] = null;
         nextLast = currentLast;
         size--;
 
@@ -106,20 +105,20 @@ public class ArrayDeque {
             resize(array.length / 2);
         }
 
-        return rmNum;
+        return rmStuff;
     }
 
     /** Deletes item from front of the list and returns deleted item. */
-    public int removeFirst() {
+    public T removeFirst() {
         if (size == 0) {
-            return -1;
+            return null;
         }
 
         int currentFirst = (nextFirst + 1) % array.length;
-        int rmNum = array[currentFirst];
+        T rmStuff = array[currentFirst];
 
         // 删除元素
-        array[currentFirst] = 0;
+        array[currentFirst] = null;
         nextFirst = currentFirst;
         size--;
 
@@ -128,7 +127,7 @@ public class ArrayDeque {
             resize(array.length / 2);
         }
 
-        return rmNum;
+        return rmStuff;
     }
     public boolean isEmpty(){
         if(size==0){
@@ -146,7 +145,7 @@ public class ArrayDeque {
     public static void main(String[] args) {
 
         Random rand = new Random();
-        ArrayDeque ad=new ArrayDeque();
+        ArrayDeque <Integer> ad=new ArrayDeque<>();
 
         for (int i = 0; i < 100; i++) {
             int randomChoice= rand.nextInt(4);
@@ -158,6 +157,9 @@ public class ArrayDeque {
                 System.out.println("addFirst: "+ad.getFirst());
             }
             else if(randomChoice==1){
+                if(ad.isEmpty()){
+                    continue;
+                }
                 int randomNumber=rand.nextInt(100);
                 ad.addLast(randomNumber);
                 System.out.println("添加了"+randomNumber);

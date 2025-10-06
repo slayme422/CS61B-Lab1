@@ -1,2 +1,4 @@
-package PACKAGE_NAME;public class Sort {
+public class Sort {
+    public static void sort(String[] strArr) {
+    }
 }

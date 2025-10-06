@@ -11,6 +11,9 @@ public class WodeTest01 {
         merged[1]=true;
         for (boolean b : merged) {
             System.out.println(b);
+
+
+       assertFalse("No 2048 tile on board\n" + b, Model.maxTileExists(a));
         }
     }
 }

@@ -7,10 +7,10 @@ import static capers.Utils.*;
 /** Represents a dog that can be serialized.
  * @author TODO
 */
-public class Dog { // TODO
+public class Dog implements Serializable{ // TODO
 
     /** Folder that dogs live in. */
-    static final File DOG_FOLDER = null; // TODO (hint: look at the `join`
+    static final File DOG_FOLDER = Utils.join(CapersRepository.CAPERS_FOLDER,"dogs"); // TODO (hint: look at the `join`
                                          //      function in Utils)
 
     /** Age of dog. */
@@ -40,7 +40,9 @@ public class Dog { // TODO
      */
     public static Dog fromFile(String name) {
         // TODO (hint: look at the Utils file)
-        return null;
+        File inFile=Utils.join(DOG_FOLDER,name);
+        Dog thisDog = Utils.readObject(inFile, Dog.class);
+        return  thisDog;
     }
 
     /**
@@ -50,13 +52,23 @@ public class Dog { // TODO
         age += 1;
         System.out.println(toString());
         System.out.println("Happy birthday! Woof! Woof!");
+        saveDog();
     }
 
     /**
      * Saves a dog to a file for future use.
      */
+    /*
+    先去创建一个文件去保存
+     */
     public void saveDog() {
         // TODO (hint: don't forget dog names are unique)
+        // 每只狗存放在 DOG_FOLDER 里，以狗的名字命名文件
+
+        File file = Utils.join(DOG_FOLDER, this.name);
+
+        // 使用 Utils 的 writeObject 方法序列化保存 Dog 对象
+        Utils.writeObject(file, (Serializable) this);
     }
 
     @Override

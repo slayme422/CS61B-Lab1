@@ -12,7 +12,7 @@ A:
 
 Q: What's something that was particularly inelegant in your code, if anything?
 
-A:
+A:感觉边界条件一直考虑的不太好
 
 Q: What did you learn by talking to your partner about writing ArrayDeque?
 
@@ -20,7 +20,7 @@ A:
 
 Q: What do you wish you would have known before writing ArrayDeque, if anything?
 
-A:
+A:我想知道nextFirst NextLast的逻辑
 
 Q: If you wrote ArrayDeque again, what would you do differently, if anything?
 
